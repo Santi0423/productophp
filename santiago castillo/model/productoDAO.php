@@ -27,6 +27,19 @@ class ProductoDAO {
         return $productos;
     }
 
- 
+    public function actualizarProducto($conn, $id, $nombre, $descripcion) {
+        $sql = "UPDATE producto SET NOMBRE=?, DESCRIPCION=? WHERE id=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssi", $nombre, $descripcion, $id);
+    
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+
+
 }
 ?>
