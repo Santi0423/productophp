@@ -40,6 +40,10 @@ class ProductoDAO {
     }
     
 
-
+    public function eliminarProducto($id_producto) {
+        $conn = $this->conexion->conectar();
+        $sql = "DELETE FROM producto WHERE id ='$id_producto'";
+        return mysqli_query($conn, $sql);
+    }
 }
 ?>
